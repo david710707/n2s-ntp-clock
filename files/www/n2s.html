@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>jQuery Keypad</title>
+<link rel="stylesheet" href="css/jquery.keypad.css">
+<style>
+#inlineKeypad { width: 10em; }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/jquery.plugin.min.js"></script>
+<script src="js/jquery.keypad.js"></script>
+<script>
+$(function () {
+	$('#defaultKeypad1').keypad({keypadOnly: false, 
+    layout: [$.keypad.HALF_SPACE + '12345',
+    		 $.keypad.HALF_SPACE + '67890',
+    		$.keypad.SPACE_BAR,
+    		$.keypad.CLEAR + $.keypad.BACK + $.keypad.CLOSE]});
+
+	$('#defaultKeypad2').keypad({keypadOnly: false, 
+    layout: [$.keypad.HALF_SPACE + '12345',
+    		 $.keypad.HALF_SPACE + '67890',
+    		$.keypad.SPACE_BAR,
+    		$.keypad.CLEAR + $.keypad.BACK + $.keypad.CLOSE]});
+	$('#inlineKeypad').keypad({onClose: function() {
+		alert($(this).val());
+	}});
+});
+</script>
+</head>
+<body>
+<form name="form" method="get" action="cgi-bin/N2S.cgi" onsubmit="DoSubmit();">
+<input type="hidden" name="baud" value="9600">
+<input type="hidden" name="name" value="">
+Password:<input type="text" id="defaultKeypad1" name="password"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Value:<input type="text" id="defaultKeypad2" name="nameVVV" maxlength="3"><br>
+<input type="submit" id="submit" value="Send">
+</form>
+
+<script>
+function DoSubmit(){
+	document.form.name.value = 'x' + document.form.nameVVV.value.padStart(4, ' ') + 'z';
+	return true;
+}
+</script>
+</body>
+</html>
