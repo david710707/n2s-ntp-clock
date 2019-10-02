@@ -41,7 +41,7 @@ define Package/n2s-ntp-clock/extra_provides
 endef
 
 define Package/n2s-ntp-clock/install
-	$(CP) -fpR ./files/* $(1)
+	$(CP) ./files/* $(1)
 endef
 
 $(eval $(call BuildPackage,n2s-ntp-clock))
