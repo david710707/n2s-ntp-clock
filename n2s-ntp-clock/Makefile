@@ -31,14 +31,14 @@ define Build/Compile
 	true
 endef
 
-define Package/n2s-ntp-clock/extra_provides
+#define Package/n2s-ntp-clock/extra_provides
 #	echo 'libnetsnmp.so.30'; \
 #	echo 'libnetsnmpagent.so.30'; \
 #	echo 'libnetsnmpmibs.so.30'; \
 #	echo 'libnetsnmptrapd.so.30'; \
 #	echo 'libpthread.so.0'; \
 #	echo 'librt.so.0';
-endef
+#endef
 
 define Package/n2s-ntp-clock/install
 	$(CP) ./files/* $(1)
